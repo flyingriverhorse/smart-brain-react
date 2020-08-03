@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
+// import Clarifai from 'clarifai';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
@@ -11,9 +11,9 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 
 //You must add your own API key here from Clarifai.
-const app = new Clarifai.App({
- apiKey: 'YOUR_API_HERE'
-});
+// const app = new Clarifai.App({
+//  apiKey: 'YOUR_API_HERE'
+// });
 
 const particlesOptions = {
   particles: {
@@ -79,7 +79,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-      fetch('http://localhost:3000/imageurl', {
+      fetch('https://frozen-fjord-65034.herokuapp.com/imageurl', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -89,7 +89,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3000/image', {
+          fetch('https://frozen-fjord-65034.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
